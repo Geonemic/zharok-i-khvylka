@@ -1,0 +1,15 @@
+# Залежності та збірки (з'являться на етапі 1)
+node_modules/
+dist/
+.wrangler/
+*.log
+
+# Локальні секрети й налаштування
+.env
+.env.*
+.claude/settings.local.json
+
+# Системне сміття
+.DS_Store
+Thumbs.db
+desktop.ini

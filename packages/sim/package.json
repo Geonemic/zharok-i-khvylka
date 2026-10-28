@@ -1,0 +1,13 @@
+{
+  "name": "@zh/sim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Детермінована симуляція гри: фізика, стихії, механізми. Спільна для клієнта й сервера.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@zh/levels": "*"
+  }
+}

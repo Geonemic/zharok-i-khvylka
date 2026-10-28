@@ -1,0 +1,10 @@
+{
+  "name": "@zh/protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Мережеві повідомлення між грою і сервером кімнат.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

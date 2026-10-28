@@ -24,4 +24,16 @@
 
 - `docs/` — дизайн-документ.
 - `prototypes/style/index.html` — прототип стилю й персонажів (один HTML-файл без залежностей; відкривається подвійним кліком).
-- Монорепозиторій (`packages/*`, `apps/*`) з'явиться на етапі 1 — див. розділ 10 дизайн-документа.
+- `packages/sim` — детермінована симуляція (`step`, стан, оцінка, рухомі платформи в `movers.ts`), rollback-неткод (`rollback.ts`) і тести у `packages/sim/test` (зокрема перевірка, що кожен рівень прохідний).
+- `packages/levels` — схема й міграції формату рівнів, рівні кампанії в `data/*.json`.
+- `packages/protocol` — мережеві повідомлення між грою й сервером.
+- `apps/web` — гра: React-екрани в `src/ui` (онлайн — `Online.tsx`, `Chat.tsx`), ігровий цикл у `src/game`, з'єднання з кімнатою в `src/net`, малювання в `src/render` (теми країн — `themes.ts`, механізми — `mechanisms.ts`), тексти — `src/i18n.ts`.
+- `apps/server` — Cloudflare Worker: віддає зібрану гру й тримає кімнати (Durable Object `Room` лише пересилає натискання між двома гравцями).
+
+## Команди
+
+- `npm run dev` — запустити гру (http://localhost:5173) разом із локальним сервером кімнат (порт 8787), або сервер `game` з `.claude/launch.json`. Якщо на Windows сервер кімнат падає з «access violation» — потрібен свіжий Microsoft Visual C++ Redistributable (його встановлює користувач); гра працює й без сервера.
+- `npm run deploy` — зібрати гру й викласти на Cloudflare (потрібен `npx wrangler login`, який робить користувач).
+- `npm test` — тести симуляції; `npm run typecheck` — перевірка типів (гра й сервер); `npm run build` — збірка гри.
+- Після змін у `packages/sim` завжди запускай тести: від них залежить онлайн.
+- У режимі розробки рушій доступний у консолі браузера як `window.__engine` (стан — `__engine.state`).
